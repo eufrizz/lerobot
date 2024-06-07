@@ -18,7 +18,7 @@ from lerobot.common.policies.diffusion.modeling_diffusion import DiffusionPolicy
 output_directory = Path("outputs/eval/example_pusht_diffusion")
 output_directory.mkdir(parents=True, exist_ok=True)
 
-device = torch.device("cuda")
+device = torch.device("cuda") if torch.cuda.is_available() else torch.device("mps")
 
 # Download the diffusion policy for pusht environment
 pretrained_policy_path = Path(snapshot_download("lerobot/diffusion_pusht"))
